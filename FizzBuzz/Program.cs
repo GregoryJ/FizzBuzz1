@@ -45,8 +45,6 @@ namespace FizzBuzz
                 line.Append($"{i}");
             }
 
-            line.Append("");
-
             return line.ToString();
         }
     }
