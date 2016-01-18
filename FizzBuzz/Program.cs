@@ -27,19 +27,25 @@ namespace FizzBuzz
         {
             var line = new StringBuilder();
 
-            line.Append($"{i} ");
-
-            if (i % 3 == 0)
+            if (i % 3 == 0 && i % 5 == 0)
+            {
+                line.Append("FizzBuzz");
+            }
+            else if (i % 3 == 0)
             {
                 line.Append("Fizz");
             }
-
-            if (i % 5 == 0)
+            else if (i % 5 == 0)
             {
                 line.Append("Buzz");
             }
 
-            line.Append("\n");
+            else
+            {
+                line.Append($"{i}");
+            }
+
+            line.Append("");
 
             return line.ToString();
         }
@@ -51,25 +57,25 @@ namespace FizzBuzzTests
     [TestFixture]
     public class ProgramTests
     {
-        [TestCase(1, "1 \n")]
-        [TestCase(2, "2 \n")]
-        [TestCase(3, "3 Fizz\n")]
-        [TestCase(4, "4 \n")]
-        [TestCase(5, "5 Buzz\n")]
-        [TestCase(6, "6 Fizz\n")]
-        [TestCase(7, "7 \n")]
-        [TestCase(8, "8 \n")]
-        [TestCase(9, "9 Fizz\n")]
-        [TestCase(10, "10 Buzz\n")]
-        [TestCase(11, "11 \n")]
-        [TestCase(12, "12 Fizz\n")]
-        [TestCase(13, "13 \n")]
-        [TestCase(14, "14 \n")]
-        [TestCase(15, "15 FizzBuzz\n")]
+        [TestCase(1, "1")]
+        [TestCase(2, "2")]
+        [TestCase(3, "Fizz")]
+        [TestCase(4, "4")]
+        [TestCase(5, "Buzz")]
+        [TestCase(6, "Fizz")]
+        [TestCase(7, "7")]
+        [TestCase(8, "8")]
+        [TestCase(9, "Fizz")]
+        [TestCase(10, "Buzz")]
+        [TestCase(11, "11")]
+        [TestCase(12, "Fizz")]
+        [TestCase(13, "13")]
+        [TestCase(14, "14")]
+        [TestCase(15, "FizzBuzz")]
         public void GenerateOutputTest(int input, string expectedOutput)
         {
             // Act
-            string actualOutput = Program.GenerateOutput(input);
+            string actualOutput = Program.GenerateOutput(input).Trim();
 
             // Assert
             Assert.AreEqual(expectedOutput, actualOutput);
